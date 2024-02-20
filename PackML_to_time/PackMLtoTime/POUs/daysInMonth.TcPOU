@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="daysInMonth" Id="{2fd857d9-b017-4cc8-ba65-24cdf21d1743}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION daysInMonth : INT
+VAR_INPUT
+	nYear	: INT;
+	nMonth	: INT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nMonth OF 
+	1:
+		daysInMonth := 31;
+	2:
+		daysInMonth := 28 + BOOL_TO_INT(isLeapYear(nYear:= nYear));
+	3:
+		daysInMonth := 31;
+	4:
+		daysInMonth := 30;
+	5:
+		daysInMonth := 31;
+	6:
+		daysInMonth := 30;
+	7:
+		daysInMonth := 31;
+	8:
+		daysInMonth := 31;
+	9:
+		daysInMonth := 30;
+	10:
+		daysInMonth := 31;
+	11:
+		daysInMonth := 30;
+	12:
+		daysInMonth := 31;
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="daysInMonth">
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

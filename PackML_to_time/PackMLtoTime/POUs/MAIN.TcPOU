@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="MAIN" Id="{fd831da4-b786-496f-a354-4672dd96d1fd}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	PackMLTime : ARRAY[0..6] OF DINT;
+	bTest: BOOL;
+	bTest2: BOOL;
+	result: ULINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bTest THEN
+	PackMLTime := ULINT_TO_PackMLTime(F_GetSystemTime());
+END_IF
+
+IF bTest2 THEN
+	result := PakcML_TO_TIME(PackMLTime :=PackMLTime );
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

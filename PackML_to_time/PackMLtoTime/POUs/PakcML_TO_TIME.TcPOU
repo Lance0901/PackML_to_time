@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="PakcML_TO_TIME" Id="{9505d381-e609-4b89-88f3-042c532762a2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION PakcML_TO_TIME : ULINT
+VAR_INPUT
+	PackMLTime	:	ARRAY[0..6] OF DINT;
+END_VAR
+VAR
+	nYear: DINT;
+	nMonth:DINT;
+	nDay:DINT;
+	nHour:DINT;
+	nMinute: DINT;
+	nSecond: DINT;
+	nMiliSecond:DINT;
+	uiMsCount: INT;
+	nResult : ULINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[nYear := PackMLTime[0];
+nMonth := PackMLTime[1];
+nDay := PackMLTime[2];
+nHour := PackMLTime[3];
+nMinute := PackMLTime[4];
+nSecond := PackMLTime[5];
+nMiliSecond := PackMLTime[6];
+
+FOR uiMsCount := 1 TO 12 DO
+	nResult := nResult + daysInMonth(nYear := DINT_TO_INT(nYear),nMonth:=uiMsCount);
+END_FOR
+
+nResult := (nResult *24 + nHour)*60+nMinute;
+nResult := nResult * 60 + nSecond;
+nResult := nResult*1000 + nMiliSecond;]]></ST>
+    </Implementation>
+    <LineIds Name="PakcML_TO_TIME">
+      <LineId Id="25" Count="5" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="43" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
